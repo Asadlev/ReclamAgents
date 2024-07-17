@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<br>
+    <div class="container">
+        <h2>Название: {{ company.name }}</h2>
+        <p>Категория: {{ company.category }}</p>
+        <p class="date">Дата публикации: {{ company.created_at }}</p>
+        <p class="description">{{ company.description }}</p>
+
+        {% if company.image %}
+            <img src="{{ company.image.url }}" alt="{{ company.name }}">
+        {% else %}
+            <!-- Placeholder image or alternative content if no image exists -->
+            <p>No image available</p>
+        {% endif %}
+
+        <img src="{% static 'goods/images/cross.svg' %}" class="img-fluid">
+    </div>
+    <br>
+    <a href="{% url 'crud:delete_company' company.slug %}">Удалить</a>
+    <br>
+    <a href="{% url 'crud:update_company' company.slug %}">Редактировать</a>
+    <br>
+{% endblock content %}

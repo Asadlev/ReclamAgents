@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'crud/css/style_delete.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+<br>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h2>Вы уверены, что хотите удалить этот заказ?</h2>
+        <p>Название: {{ company.title }}</p>
+        <p>Описание: {{ company.description }}</p>
+        <form action="{% url 'crud:delete_company' company.slug %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Удалить</button>
+            <a href="{% url 'crud:detail_company' company.slug %}" class="cancel-btn">Отмена</a>
+        </form>
+    </div>
+</form>
+
+{% endblock content %}

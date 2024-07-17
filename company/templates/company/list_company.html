@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Main News Slider Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7 px-0">
+                <div class="owl-carousel main-carousel position-relative">
+                    {% for company in companies %}
+                        <div class="position-relative overflow-hidden" style="height: 500px;">
+                            <a href="{% url 'crud:detail_company' company.slug %}">
+                                {% if company.image %}
+                                    <img class="img-fluid h-100" src="{{ company.image.url }}" style="object-fit: cover;">
+                                {% else %}
+                                    <!-- Placeholder or default image if company.image is None -->
+                                    <img class="img-fluid h-100" src="{% static 'path/to/placeholder_image.jpg' %}" style="object-fit: cover;">
+                                {% endif %}
+                            </a>
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                       href="{% url 'crud:detail_company' company.slug %}">
+                                        {{ company.category }} - {{ company.name }}
+                                    </a>
+                                    <a class="text-white" href="{% url 'crud:detail_company' company.slug %}">
+                                        Опубликовано: {{ company.created_at }}
+                                    </a>
+                                </div>
+                                <a class="h2 m-0 text-white text-uppercase font-weight-bold"
+                                   href="{% url 'crud:detail_company' company.slug %}">
+                                    {{ company.description|truncatewords:2 }}...
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main News Slider End -->
+{% endblock content %}
