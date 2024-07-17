@@ -1,0 +1,46 @@
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'user/css/login_style.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="login-container">
+    <h3>Авторизация Client</h3>
+    <form action="{% url 'user:login_client' %}" method="post">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if form.non_field_errors %}
+            <p class="error">{{ form.non_field_errors }}</p>
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Имя пользователя</label>
+            <input type="text" class="form-control" name="username" placeholder="Введите имя">
+            {% if form.username.errors %}
+                <p class="error">{{ form.username.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="id_password" class="form-label">Пароль</label>
+            <input type="password" class="form-control" name="password" id="id_password" placeholder="Введите пароль">
+            {% if form.password.errors %}
+                <p class="error">{{ form.password.errors }}</p>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+        <div class="additional-links">
+            <a href="{% url 'user:register_client' %}" class="btn btn-secondary">Зарегистрироваться</a>
+            {% comment %}<a href="{% url 'user:password_reset' %}" class="btn btn-link">Забыли пароль?</a>{% endcomment %}
+            <a href="#" class="btn btn-google"><i class="fa fa-google"></i> Войти с Google</a>
+            <a href="{% url 'user:choose_user_type' %}" class="btn btn-google"><i class="fa fa-google"></i>Перейти к ролям</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

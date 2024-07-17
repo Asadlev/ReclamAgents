@@ -1,0 +1,49 @@
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'user/css/login_style.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="login-container">
+    <h3>Авторизация Employee</h3>
+    <form action="{% url 'user:login_employee' %}" method="POST">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if form.non_field_errors %}
+            <p class="error">{{ form.non_field_errors }}</p>
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Имя пользователя</label>
+            <input type="text" class="form-control" name="username" id="id_username" placeholder="Введите имя" value="{{ form.username.value }}">
+            {% if form.username.errors %}
+                <p class="error">{{ form.username.errors }}</p>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="id_password" class="form-label">Пароль</label>
+            <input type="password" class="form-control" name="password" id="id_password" placeholder="Введите пароль">
+            {% if form.password.errors %}
+                <p class="error">{{ form.password.errors }}</p>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+        <div class="additional-links">
+            <a href="{% url 'user:register_employee' %}" class="btn btn-secondary">Зарегистрироваться</a>
+            <br>
+            <a href="#" class="btn btn-google"><i class="fa fa-google"></i> Войти с Google</a>
+            <br>
+            <br>
+            <a href="{% url 'user:choose_user_type' %}" class="btn btn-google"><i class="fa fa-google"></i>Перейти к ролям</a>
+            <br>
+        </div>
+    </form>
+</div>
+{% endblock content %}

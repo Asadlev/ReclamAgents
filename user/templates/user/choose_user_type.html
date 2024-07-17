@@ -1,0 +1,21 @@
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'user/css/choose_user_type.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="choose-user-container">
+    <h2>Выберите тип пользователя</h2>
+    <div class="user-options">
+        <a href="{% url 'user:login_employee' %}" class="user-option employee">
+            <div class="icon"><i class="fas fa-user-tie"></i></div>
+            <span>Я сотрудник</span>
+        </a>
+        <a href="{% url 'user:login_client' %}" class="user-option client">
+            <div class="icon"><i class="fas fa-user"></i></div>
+            <span>Я клиент</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

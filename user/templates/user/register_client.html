@@ -1,0 +1,21 @@
+
+
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'user/css/register_style.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <div class="form-container">
+            <h2>Регистрация клиента</h2>
+            <form action="{% url 'user:register_client' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
