@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    width: 100%;
+}
+
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.additional-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn-secondary, .btn-link, .btn-google {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-secondary {
+    padding: 10px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-link {
+    color: #007bff;
+    padding: 10px;
+}
+
+.btn-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.btn-google {
+    padding: 10px;
+    background-color: #db4437;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-google i {
+    margin-right: 8px;
+}
+
+.btn-google:hover {
+    background-color: #c23321;
+}
